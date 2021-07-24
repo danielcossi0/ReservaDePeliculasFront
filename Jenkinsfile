@@ -49,13 +49,13 @@ pipeline {
         sh 'npm run lint --silent'
       }
     }
-
+/*
     stage('Test') {
       steps{
         echo "------------>Testing<------------"
         sh 'npm run test'
       }
-    }
+    }*/
     
     stage('Static Code Analysis'){
         steps{
