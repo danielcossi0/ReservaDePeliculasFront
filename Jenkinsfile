@@ -46,7 +46,7 @@ pipeline {
     stage('Lint Analysis') {  
       steps{
         echo "------------>Lint Analysis<------------"
-        sh 'npm run lint'
+        sh 'npm run lint --silent'
       }
     }
 
