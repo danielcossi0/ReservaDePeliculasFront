@@ -1,12 +1,13 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from '@core/core.module';
 import { HomeComponent } from '@home/home.component';
 import { ProductoModule } from '@producto/producto.module';
-import { CoreModule } from '@core/core.module';
+import { ReservaModule } from './feature/reserva/reserva.module';
 import { CookieService } from 'ngx-cookie-service';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
 
 
 
@@ -20,7 +21,8 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserModule,
     AppRoutingModule,
     ProductoModule,
-    CoreModule
+    CoreModule,
+    ReservaModule
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],

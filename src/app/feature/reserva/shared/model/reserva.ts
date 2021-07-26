@@ -8,14 +8,14 @@ export class Reserva {
     precioCalculado: number;
 
 
-    constructor(idReserva: number, 
+    constructor(idReserva: number,
         cedulaCliente: string,
         nombreDeLaPelicula: string,
         fechaDeReserva: Date,
         diasDeReserva: number,
         fechaDeEntrega: Date,
         precioCalculado: number
-        ) {
+    ) {
 
         this.idReserva = idReserva;
         this.cedulaCliente = cedulaCliente;
