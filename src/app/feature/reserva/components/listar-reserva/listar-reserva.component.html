@@ -1,1 +1,44 @@
-<p>listar-reserva works!</p>
+<div class="card">
+    <div class="card-body">
+        <h5 class="titulo">Reservas</h5>
+        <table class="table" aria-describedby="Todas las reservas">
+            <thead>
+                <tr>
+                    <th scope="col">Id de Reserva</th>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Pelicula</th>
+                    <th scope="col">Fecha de reserva</th>
+                    <th scope="col">Días de reserva</th>
+                    <th scope="col">Fecha de Entrega</th>
+                    <th scope="col">Precio</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reserva of listaReservas">
+                    <td>
+                        {{reserva.idReserva}}
+                    </td>
+                    <td>
+                        {{reserva.cedulaCliente}}
+                    </td>
+                    <td>
+                        {{reserva.nombreDeLaPelicula}}
+                    </td>
+                    <td>
+                        {{reserva.fechaDeReserva}}
+                    </td>
+                    <td>
+                        {{reserva.diasDeReserva}}
+                    </td>
+                    <td>
+                        {{reserva.fechaDeEntrega}}
+                    </td>
+                    <td>
+                        {{reserva.precioCalculado}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

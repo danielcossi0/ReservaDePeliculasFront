@@ -17,7 +17,7 @@ export class CrearReservaComponent implements OnInit {
   reservaForm: FormGroup;
   constructor(protected reservaServices: ReservaService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.construirFormularioReserva();
   }
 
@@ -27,9 +27,14 @@ export class CrearReservaComponent implements OnInit {
 
   private construirFormularioReserva() {
     this.reservaForm = new FormGroup({
-      cedulaCliente: new FormControl('', [Validators.required, Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_CEDULA)]),
-      nombreDeLaPelicula: new FormControl('', [Validators.required, Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_NOMBRE_DE_PELICULA)]),
-      diasDeReserva: new FormControl('', [Validators.required, Validators.max(DIAS_MAXIMOS_DE_RESERVA_PERMITIDOS)]),
+      cedulaCliente: new FormControl('', Validators.compose([Validators.required, 
+        Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_CEDULA)])),
+
+      nombreDeLaPelicula: new FormControl('', Validators.compose([Validators.required, 
+        Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_NOMBRE_DE_PELICULA)])),
+        
+      diasDeReserva: new FormControl('', Validators.compose([Validators.required, 
+        Validators.max(DIAS_MAXIMOS_DE_RESERVA_PERMITIDOS)])),
     })
 
   }
