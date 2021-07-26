@@ -4,6 +4,7 @@ import { CrearReservaComponent } from './components/crear-reserva/crear-reserva.
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ReservaComponent } from './components/reserva/reserva.component';
+import { ListarPorCedulaComponent } from './components/listar-por-cedula/listar-por-cedula.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,11 @@ const routes: Routes = [
       {
         path: 'borrar',
         component: EliminarReservaComponent
-      }
+      },
+      {
+        path: 'listar-por-cedula',
+        component: ListarPorCedulaComponent
+      },
     ]
 
   }

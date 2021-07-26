@@ -6,6 +6,7 @@ export class Reserva {
     diasDeReserva: number;
     fechaDeEntrega: Date;
     precioCalculado: number;
+    estado: string;
 
 
     constructor(idReserva: number,
@@ -14,7 +15,8 @@ export class Reserva {
         fechaDeReserva: Date,
         diasDeReserva: number,
         fechaDeEntrega: Date,
-        precioCalculado: number
+        precioCalculado: number,
+        estado: string
     ) {
 
         this.idReserva = idReserva;
@@ -24,5 +26,6 @@ export class Reserva {
         this.diasDeReserva = diasDeReserva;
         this.fechaDeEntrega = fechaDeEntrega;
         this.precioCalculado = precioCalculado;
+        this.estado = estado;
     }
 }

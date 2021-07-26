@@ -1,3 +1,4 @@
+import { ReservaService } from './../../shared/service/reserva.service';
 import { Reserva } from './../../shared/model/reserva';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,11 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class ListarReservaComponent implements OnInit {
 
   listaReservas: Reserva[] = [];
-  constructor() { }
+  constructor(private _reservaService: ReservaService) { }
 
   ngOnInit(): void {
+    this.obtenerReservas();
   }
 
-  
-
+  obtenerReservas() {
+    this._reservaService.consultar().subscribe(data => {
+      this.listaReservas = data;
+    })
+  }
 }

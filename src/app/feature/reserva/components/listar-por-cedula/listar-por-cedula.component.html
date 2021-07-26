@@ -1,3 +1,20 @@
+<div class="container-sm col-md-6">
+    <form [formGroup]="listaPorCedulaForm">
+        <div class="form-group">
+            <label>Cédula:</label>
+            <input validar class="form-control" type="text" id="cedulaCliente" name="cedulaCliente" placeholder="Cédula" formControlName="cedulaCliente">
+        </div>
+        <br>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary btn-lg" (click)="obtenerReservas()" type="submit">
+                Consultar</button>
+
+        </div>
+    </form>
+</div>
+
+<hr>
+
 <div class="card">
     <div class="card-body">
         <h5 class="titulo">Reservas</h5>

@@ -1,21 +1,21 @@
 <br>
-<div class="d-flex justify-content-evenly">
-    <form [formGroup]="reservaForm" (ngSubmit)="crear()">
-        <div class=" row">
+<div class="container-sm col-md-6">
+    <form [formGroup]="reservaForm">
+        <div class="form-group">
             <label>Cedula del cliente:</label>
             <input validar type="text" id="cedulaCliente" name="cedulaCliente" placeholder="Cedula del cliente" class="form-control " formControlName="cedulaCliente">
         </div>
-        <div class="row">
+        <div class="form-group">
             <label>Pelicula:</label>
             <input validar type="text" id="nombreDeLaPelicula" name="nombreDeLaPelicula" placeholder="Pelicula" class="form-control " formControlName="nombreDeLaPelicula">
         </div>
-        <div class="row">
+        <div class="form-group">
             <label>Dias de reserva:</label>
             <input validar type="number" id="diasDeReserva" name="diasDeReserva" placeholder="Días" class="form-control " formControlName="diasDeReserva">
         </div>
         <br>
         <div class="d-grid gap-2">
-            <button class="btn btn-success btn-lg " type="submit">
+            <button class="btn btn-success btn-lg" (click)="crear()" type="submit">
                 Reservar</button>
         </div>
     </form>

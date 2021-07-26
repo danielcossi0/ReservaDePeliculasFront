@@ -6,6 +6,8 @@ import { ListarReservaComponent } from './components/listar-reserva/listar-reser
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { ReservaRoutingModule } from './reserva-routing.module';
 import { ReservaService } from './shared/service/reserva.service';
+import { ListarPorCedulaComponent } from './components/listar-por-cedula/listar-por-cedula.component';
+import { ModificarReservaComponent } from './components/modificar-reserva/modificar-reserva.component';
 
 
 
@@ -14,7 +16,9 @@ import { ReservaService } from './shared/service/reserva.service';
     CrearReservaComponent,
     EliminarReservaComponent,
     ListarReservaComponent,
-    ReservaComponent
+    ReservaComponent,
+    ListarPorCedulaComponent,
+    ModificarReservaComponent
   ],
   imports: [
     ReservaRoutingModule,

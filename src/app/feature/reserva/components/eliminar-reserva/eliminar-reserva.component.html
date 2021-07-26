@@ -1,1 +1,13 @@
-<p>eliminar-reserva works!</p>
+<div class="container-sm col-md-6">
+    <form [formGroup]="eliminarReservaForm">
+        <div class="form-group">
+            <label>Id de reserva:</label>
+            <input validar class="form-control" type="number" id="idReserva" name="idReserva" placeholder="Id de reserva" formControlName="idReserva">
+        </div>
+        <br>
+        <div class="d-grid gap-2">
+            <button class="btn btn-danger btn-lg" (click)="eliminarReserva()" type="submit">
+                Eliminar</button>
+        </div>
+    </form>
+</div>
