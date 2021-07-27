@@ -55,7 +55,7 @@ pipeline {
     stage('Build') {
             steps {
               echo "------------>Building<------------"
-              sh 'ng build --experimental-worker'
+              sh 'ng build'
             }
         }
   }
