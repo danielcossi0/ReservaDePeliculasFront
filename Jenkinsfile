@@ -41,6 +41,13 @@ pipeline {
         sh 'npm install'
       }
     }
+
+      stage('ng update') {
+      steps{
+        echo "------------>Updating<------------"
+        sh 'ng update'
+      }
+    }
     
     stage('Static Code Analysis'){
         steps{
