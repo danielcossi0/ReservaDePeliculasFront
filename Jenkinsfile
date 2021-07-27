@@ -41,13 +41,6 @@ pipeline {
         sh 'npm install'
       }
     }
-
-      stage('NPM Install @types/node') {
-      steps{
-        echo "------------>Installing @types/node<------------"
-        sh 'npm install @types/node'
-      }
-    }
     
     stage('Static Code Analysis'){
         steps{
