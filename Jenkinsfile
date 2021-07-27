@@ -18,6 +18,9 @@ pipeline {
   stages{
       stage('Checkout') {
       steps{
+        cleanWs()
+                // We need to explicitly checkout from SCM here
+        checkout scm
         echo "------------>Checkout<------------"
         checkout([
             $class: 'GitSCM',
