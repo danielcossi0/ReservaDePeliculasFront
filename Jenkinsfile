@@ -42,10 +42,10 @@ pipeline {
       }
     }
 
-      stage('NPM Update') {
+      stage('NPM Install @types/node') {
       steps{
-        echo "------------>Updating<------------"
-        sh 'npm update'
+        echo "------------>Installing @types/node<------------"
+        sh 'npm install @types/node'
       }
     }
     
