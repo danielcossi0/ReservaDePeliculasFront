@@ -62,7 +62,7 @@ pipeline {
     stage('Build') {
             steps {
               echo "------------>Building<------------"
-              sh 'npm run build'
+              sh 'ng build --prod --progress=false'
             }
         }
   }
