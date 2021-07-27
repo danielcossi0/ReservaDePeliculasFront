@@ -42,10 +42,10 @@ pipeline {
       }
     }
 
-      stage('ng update') {
+      stage('NPM pdate') {
       steps{
         echo "------------>Updating<------------"
-        sh 'ng update'
+        sh 'npm update'
       }
     }
     
