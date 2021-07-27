@@ -1,1 +1,35 @@
-<p>modificar-reserva works!</p>
+<br>
+<div class="container-sm col-md-6">
+    <form [formGroup]="reservaForm">
+        <div class="form-group">
+            <label>Cedula del cliente:</label>
+            <input validar type="text" id="cedulaCliente" name="cedulaCliente" placeholder="Cedula del cliente" class="form-control " formControlName="cedulaCliente">
+        </div>
+        <div class="form-group">
+            <label>Pelicula:</label>
+            <input validar type="text" id="nombreDeLaPelicula" name="nombreDeLaPelicula" placeholder="Pelicula" class="form-control " formControlName="nombreDeLaPelicula">
+        </div>
+        <div class="form-group">
+            <label>Fecha de reserva:</label>
+            <input validar type="datetime" id="fechaDeReserva" name="fechaDeReserva" placeholder="Fecha de reserva" class="form-control " formControlName="fechaDeReserva">
+        </div>
+        <div class="form-group">
+            <label>Dias de reserva:</label>
+            <input validar type="number" id="diasDeReserva" name="diasDeReserva" placeholder="Días" class="form-control " formControlName="diasDeReserva">
+        </div>
+        <div class="form-group">
+            <label>Fecha de entrega:</label>
+            <input validar type="datetime" id="fechaDeEntrega" name="fechaDeEntrega" placeholder="Fecha de entrega" class="form-control " formControlName="fechaDeEntrega">
+        </div>
+        <div class="form-group">
+            <label>estado:</label>
+            <input validar type="text" id="estado" name="estado" placeholder="Estado" class="form-control " formControlName="estado">
+        </div>
+
+        <br>
+        <div class="d-grid gap-2">
+            <button class="btn btn-success btn-lg" (click)="actualizar()" type="submit">
+                Guardar</button>
+        </div>
+    </form>
+</div>

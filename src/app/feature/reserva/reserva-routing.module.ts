@@ -1,3 +1,4 @@
+import { ModificarReservaComponent } from './components/modificar-reserva/modificar-reserva.component';
 import { EliminarReservaComponent } from './components/eliminar-reserva/eliminar-reserva.component';
 import { ListarReservaComponent } from './components/listar-reserva/listar-reserva.component';
 import { CrearReservaComponent } from './components/crear-reserva/crear-reserva.component';
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'listar-por-cedula',
         component: ListarPorCedulaComponent
+      },
+      {
+        path: 'editar',
+        component: ModificarReservaComponent
       },
     ]
 

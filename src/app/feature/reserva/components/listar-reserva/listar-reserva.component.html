@@ -12,6 +12,7 @@
                     <th scope="col">Fecha de Entrega</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Estado</th>
+                    <th scope="col">Opciones</th>
 
                 </tr>
             </thead>
@@ -40,6 +41,9 @@
                     </td>
                     <td>
                         {{reserva.estado}}
+                    </td>
+                    <td>
+                        <button (click)="modificarReserva(reserva)">Editar</button>
                     </td>
                 </tr>
             </tbody>

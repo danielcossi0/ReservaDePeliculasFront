@@ -1,6 +1,7 @@
 import { ReservaService } from './../../shared/service/reserva.service';
 import { Reserva } from './../../shared/model/reserva';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-reserva',
@@ -10,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class ListarReservaComponent implements OnInit {
 
   listaReservas: Reserva[] = [];
-  constructor(private _reservaService: ReservaService) { }
+  constructor(private _reservaService: ReservaService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.obtenerReservas();
@@ -20,5 +22,11 @@ export class ListarReservaComponent implements OnInit {
     this._reservaService.consultar().subscribe(data => {
       this.listaReservas = data;
     })
+  }
+
+  modificarReserva(reserva:Reserva){
+    console.log(reserva);
+    localStorage.setItem('reserva',JSON.stringify(reserva))
+    this.router.navigate(['reservas/editar']);
   }
 }
