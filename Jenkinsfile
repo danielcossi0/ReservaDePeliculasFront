@@ -42,7 +42,7 @@ pipeline {
       }
     }
 
-      stage('NPM pdate') {
+      stage('NPM Update') {
       steps{
         echo "------------>Updating<------------"
         sh 'npm update'
