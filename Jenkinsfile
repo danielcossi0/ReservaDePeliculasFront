@@ -41,21 +41,6 @@ pipeline {
         sh 'npm install'
       }
     }
-
-
-    stage('Lint Analysis') {  
-      steps{
-        echo "------------>Lint Analysis<------------"
-        sh 'npm run lint --silent'
-      }
-    }
-/*
-    stage('Test') {
-      steps{
-        echo "------------>Testing<------------"
-        sh 'npm run test'
-      }
-    }*/
     
     stage('Static Code Analysis'){
         steps{
