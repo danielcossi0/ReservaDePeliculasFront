@@ -42,7 +42,7 @@ export class CrearReservaComponent implements OnInit {
 
       diasDeReserva: new FormControl('', Validators.compose([Validators.required,
       Validators.max(DIAS_MAXIMOS_DE_RESERVA_PERMITIDOS)])),
-    })
+    });
 
   }
 }

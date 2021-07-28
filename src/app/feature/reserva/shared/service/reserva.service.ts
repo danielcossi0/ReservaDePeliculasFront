@@ -19,13 +19,15 @@ export class ReservaService {
   public consultar() {
     
     console.log("listar reservas");
-    return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas`, this.http.optsName('consultar reservas'));
+    return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas`, 
+    this.http.optsName('consultar reservas'));
   }
 
   public consultarPorCedula(cedula: string) {
     
     console.log("listar por cedula" + `${environment.endpoint}/reservas/${cedula}`);
-    return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas/${cedula}`, this.http.optsName('listar por cedula'));
+    return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas/${cedula}`, 
+    this.http.optsName('listar por cedula'));
   }
  
   public eliminar(idReserva: number) {    
@@ -37,6 +39,7 @@ export class ReservaService {
   public actualizar(reserva:Reserva){
     console.log("actualizar reserva: "+ reserva);
     console.log("actualizar reserva: "+ `${environment.endpoint}/reservas/${reserva.idReserva}`);
-    return this.httpClient.put<Reserva>(`${environment.endpoint}/reservas/${reserva.idReserva}`, reserva);
+    return this.httpClient.put<Reserva>(`${environment.endpoint}/reservas/${reserva.idReserva}`, 
+    reserva);
   }
 }
