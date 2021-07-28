@@ -41,7 +41,15 @@ pipeline {
         sh 'npm install'
       }
     }
-    
+/*
+     stage('Test') {
+      steps{
+        echo "------------>Test<------------"
+        sh 'ng test --browsers ChromeHeadless --progress=false --watch false --code-coverage'
+      }
+    }
+*/
+
     stage('Static Code Analysis'){
         steps{
             echo '------------>Analisis de código estático<------------'
