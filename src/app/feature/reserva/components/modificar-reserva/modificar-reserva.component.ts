@@ -12,7 +12,6 @@ const DIAS_MAXIMOS_DE_RESERVA_PERMITIDOS = 5;
 @Component({
   selector: 'app-modificar-reserva',
   templateUrl: './modificar-reserva.component.html',
-  styleUrls: ['./modificar-reserva.component.css']
 })
 export class ModificarReservaComponent implements OnInit {
   
@@ -45,14 +44,14 @@ export class ModificarReservaComponent implements OnInit {
       fechaDeEntrega: new FormControl(this.reserva.fechaDeEntrega),
 
       estado: new FormControl(this.reserva.estado)
-    })
+    });
 
   }
 
   actualizar() {
 
-    this.reservaActualizada = this.reservaForm.value
-    this.reservaActualizada.idReserva = this.reserva.idReserva
+    this.reservaActualizada = this.reservaForm.value;
+    this.reservaActualizada.idReserva = this.reserva.idReserva;
 
     this._reservaServices.actualizar(this.reservaActualizada).subscribe(
       ()=>{

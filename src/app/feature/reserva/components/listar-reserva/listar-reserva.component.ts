@@ -21,12 +21,11 @@ export class ListarReservaComponent implements OnInit {
   obtenerReservas() {
     this._reservaService.consultar().subscribe(data => {
       this.listaReservas = data;
-    })
+    });
   }
 
   modificarReserva(reserva:Reserva){
-    console.log(reserva);
-    localStorage.setItem('reserva',JSON.stringify(reserva))
+    localStorage.setItem('reserva',JSON.stringify(reserva));
     this.router.navigate(['reservas/editar']);
   }
 }

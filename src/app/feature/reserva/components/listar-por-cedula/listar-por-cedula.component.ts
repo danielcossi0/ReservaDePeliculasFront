@@ -26,13 +26,13 @@ export class ListarPorCedulaComponent implements OnInit {
     this.cedulaCliente = this.listaPorCedulaForm.value.cedulaCliente;
     this._reservaService.consultarPorCedula(this.cedulaCliente).subscribe(data => {
       this.listaReservas = data;
-    })
+    });
   }
 
   private construirFormularioReservasPorCedula() {
     this.listaPorCedulaForm = new FormGroup({
       cedulaCliente: new FormControl('', Validators.required)
-    })
+    });
 
   }
 }

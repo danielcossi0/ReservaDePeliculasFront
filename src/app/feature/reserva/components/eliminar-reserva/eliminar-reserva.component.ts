@@ -1,12 +1,11 @@
 import { ReservaService } from './../../shared/service/reserva.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-eliminar-reserva',
   templateUrl: './eliminar-reserva.component.html',
-  styleUrls: ['./eliminar-reserva.component.css']
 })
 export class EliminarReservaComponent implements OnInit {
   eliminarReservaForm: FormGroup;
@@ -20,7 +19,7 @@ export class EliminarReservaComponent implements OnInit {
   private construirFormularioElimiarReserva() {
     this.eliminarReservaForm = new FormGroup({
       idReserva: new FormControl('', Validators.required)
-    })
+    });
 
   }
 

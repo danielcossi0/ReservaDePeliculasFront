@@ -11,7 +11,6 @@ const DIAS_MAXIMOS_DE_RESERVA_PERMITIDOS = 5;
 @Component({
   selector: 'app-crear-reserva',
   templateUrl: './crear-reserva.component.html',
-  styleUrls: ['./crear-reserva.component.css']
 })
 export class CrearReservaComponent implements OnInit {
 
