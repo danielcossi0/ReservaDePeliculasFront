@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class EliminarReservaComponent implements OnInit {
   eliminarReservaForm: FormGroup;
+  idReserva: number;
   constructor(private _reservaService:ReservaService,
     private router: Router) { }
 
@@ -17,8 +18,10 @@ export class EliminarReservaComponent implements OnInit {
   }
 
   private construirFormularioElimiarReserva() {
+    
+    this.idReserva = JSON.parse(localStorage.getItem('idReserva'));
     this.eliminarReservaForm = new FormGroup({
-      idReserva: new FormControl('', Validators.required)
+      idReserva: new FormControl(this.idReserva, Validators.required)
     });
 
   }

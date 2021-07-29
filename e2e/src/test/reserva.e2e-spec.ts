@@ -13,10 +13,47 @@ describe('workspace-project Producto', () => {
         reserva = new ReservaPage();
     });
 
-    it('Deberia listar las reservas', () => {
-        page.navigateTo();
-        navBar.clickBotonListar();
+    it('Deberia listar las reservas', async () => {
+        await page.navigateTo();
+        await navBar.clickBotonListar();
 
+        expect(reserva.contarReservas()).toBeGreaterThanOrEqual(0);
+    });
+
+    it('deberria crear una reserva', async () => {
+        const cedulaClienteTest: string = '123456';
+        const nombreDeLaPeliculaTest: string = 'e2eTest';
+        const diasDeReservaTest: number = 5;
+        await page.navigateTo();
+        await navBar.clickBotonCrear();
+        await reserva.ingresarCedulaDeCliente(cedulaClienteTest);
+        await reserva.ingresarNombreDeLaPelicula(nombreDeLaPeliculaTest);
+        await reserva.ingresarDiasDeReserva(diasDeReservaTest);
+        await reserva.clickBotonReservar();
+
+    });
+
+    it('deberria eliminar una reserva', async () => {
+        await page.navigateTo();
+        await reserva.irABorrarReserva();
+        await reserva.ingresarIdReservaParaEliminar(1);
+        await reserva.clickBotonEliminarReserva();
+    });
+
+    it('deberria modificar una reserva', async () => {
+        await page.navigateTo();
+        await navBar.clickBotonListar();
+        await reserva.clickBotonModificarReserva();
+        await reserva.ingresarNombreDeLaPelicula("nombreTest-e2e");
+        await reserva.clickBotonGuardarReservaModifica();
+    });
+
+    it('deberria listar una reserva filtrando por cedula', async () => {
+        await page.navigateTo();
+        await navBar.clickBotonFiltrar();
+        await reserva.ingresarCedulaDeCliente('1');
+        await reserva.clickBotonConsultar();
+        
         expect(reserva.contarReservas()).toBeGreaterThanOrEqual(0)
     });
 });

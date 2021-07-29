@@ -12,7 +12,6 @@ export class AppComponent {
   public companies: MenuItem[] = [
     { url: '/reservas/listar', nombre: 'Todas las reservas' },
     { url: '/reservas/crear', nombre: 'Crear reserva' },
-    { url: '/reservas/borrar', nombre: 'Borrar reserva' },
     { url: '/reservas/listar-por-cedula', nombre: 'Filtrar por cédula' },
   ];
 }

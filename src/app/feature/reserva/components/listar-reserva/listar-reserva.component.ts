@@ -28,4 +28,8 @@ export class ListarReservaComponent implements OnInit {
     localStorage.setItem('reserva',JSON.stringify(reserva));
     this.router.navigate(['reservas/editar']);
   }
+  eliminarReserva(idReserva:number){
+    localStorage.setItem('idReserva',JSON.stringify(idReserva));
+    this.router.navigate(['reservas/borrar']);
+  }
 }

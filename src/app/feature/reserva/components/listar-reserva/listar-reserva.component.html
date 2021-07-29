@@ -43,7 +43,8 @@
                         {{reserva.estado}}
                     </td>
                     <td>
-                        <button (click)="modificarReserva(reserva)">Editar</button>
+                        <button class="list-group-item list-group-item-action" id="btnRedirectModificarReserva" (click)="modificarReserva(reserva)">Editar</button>
+                        <button class="list-group-item list-group-item-action" id="btnRedirectEliminarReserva" (click)="eliminarReserva(reserva.idReserva)">Eliminar</button>
                     </td>
                 </tr>
             </tbody>
