@@ -5,13 +5,16 @@ import { HttpService } from '@core/services/http.service';
 
 import { ReservaService } from './reserva.service';
 import { environment } from 'src/environments/environment';
+import { HttpResponse } from '@angular/common/http';
 
 describe('ReservaService', () => {
   let fechaReservaTest: Date = new Date();
   let fechaEntregaTest: Date = new Date();
   let httpMock: HttpTestingController;
   let service: ReservaService;
-  const apiEndpointReservasConsulta = `${environment.endpoint}/reservas`;
+  const apiEndpointReservas = `${environment.endpoint}/reservas`;
+
+
 
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
@@ -26,12 +29,12 @@ describe('ReservaService', () => {
     const reservaService: ReservaService = TestBed.inject(ReservaService);
     expect(reservaService).toBeTruthy();
   });
- 
-  it('deberia listar todas las reservas', ()=>{
+
+  it('deberia listar todas las reservas', () => {
 
     const dummyReservas = [
       new Reserva(1,
-        "123456789",
+        "1",
         "spiderman",
         fechaReservaTest,
         1,
@@ -39,8 +42,16 @@ describe('ReservaService', () => {
         25000.0,
         "Pendiente"
       ), new Reserva(2,
-        "123456789",
+        "2",
         "spiderman 2",
+        fechaReservaTest,
+        1,
+        fechaEntregaTest,
+        25000.0,
+        "Pendiente"
+      ), new Reserva(3,
+        "1",
+        "spiderman 3",
         fechaReservaTest,
         1,
         fechaEntregaTest,
@@ -50,28 +61,93 @@ describe('ReservaService', () => {
     ];
 
     service.consultar().subscribe(reservas => {
-      expect(reservas.length).toBe(2);
+      expect(reservas.length).toBe(3);
       expect(reservas).toEqual(dummyReservas);
     });
-    const req = httpMock.expectOne(apiEndpointReservasConsulta);
+    const req = httpMock.expectOne(apiEndpointReservas);
     expect(req.request.method).toBe('GET');
     req.flush(dummyReservas);
   });
-/*
-  it('deberia listar las reservas de un cliente', ()=>{
-    
-  });
-  
-  it('deberia crear una reserva', ()=>{
-    
+
+  it('deberia listar las reservas de un cliente', () => {
+    const dummyReservas = [
+      new Reserva(1,
+        "1",
+        "spiderman",
+        fechaReservaTest,
+        1,
+        fechaEntregaTest,
+        25000.0,
+        "Pendiente"
+      ), new Reserva(3,
+        "1",
+        "spiderman 3",
+        fechaReservaTest,
+        1,
+        fechaEntregaTest,
+        25000.0,
+        "Pendiente"
+      )
+    ];
+    service.consultarPorCedula("1").subscribe(reservas => {
+
+      expect(reservas.length).toBe(2);
+      expect(reservas).toEqual(dummyReservas);
+
+    });
+
+    const req = httpMock.expectOne(apiEndpointReservas + "/1");
+    expect(req.request.method).toBe('GET');
+    req.flush(dummyReservas);
   });
 
-  it('deberia eliminar una reserva', ()=>{
-    
+  it('deberia crear una reserva', () => {
+    const reservaTest: Reserva = new Reserva(1,
+      "1",
+      "spiderman",
+      fechaReservaTest,
+      1,
+      fechaEntregaTest,
+      25000.0,
+      "Pendiente");
+
+    service.guardar(reservaTest).subscribe((respuesta) => {
+      expect(respuesta).toEqual(true);
+    });
+    const req = httpMock.expectOne(apiEndpointReservas);
+    expect(req.request.method).toBe('POST');
+    req.event(new HttpResponse<boolean>({ body: true }));
   });
 
-  it('deberia modificar una reserva', ()=>{
-    
+  it('deberia eliminar una reserva', () => {
+    const reservaTest: Reserva = new Reserva(1,
+      "1",
+      "spiderman",
+      fechaReservaTest,
+      1,
+      fechaEntregaTest,
+      25000.0,
+      "Pendiente");
+    service.eliminar(reservaTest.idReserva).subscribe((respuesta) => {
+      expect(respuesta).toEqual(true);
+    });
+    const req = httpMock.expectOne(`${apiEndpointReservas}/1`);
+    expect(req.request.method).toBe('DELETE');
+    req.event(new HttpResponse<boolean>({ body: true }));
   });
-*/
+
+  it('deberia modificar una reserva', () => {
+    const reservaTest: Reserva = new Reserva(1,
+      "1",
+      "spiderman",
+      fechaReservaTest,
+      1,
+      fechaEntregaTest,
+      25000.0,
+      "Pendiente");
+
+    service.actualizar(reservaTest).subscribe((respuesta)=>{
+      expect(respuesta).toEqual(reservaTest);
+    });
+  });
 });

@@ -43,6 +43,7 @@ describe('CrearReservaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  
-  
+  it('deberia validar cuando el formulario está vacio', () => {
+    expect(component.reservaForm.valid).toBeFalsy();
+  });
 });
