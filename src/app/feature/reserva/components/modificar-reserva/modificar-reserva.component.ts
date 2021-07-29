@@ -49,7 +49,7 @@ export class ModificarReservaComponent implements OnInit {
   }
 
   actualizar() {
-
+    
     this.reservaActualizada = this.reservaForm.value;
     this.reservaActualizada.idReserva = this.reserva.idReserva;
 
