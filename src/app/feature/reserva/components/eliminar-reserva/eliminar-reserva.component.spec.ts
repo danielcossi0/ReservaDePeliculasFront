@@ -10,6 +10,7 @@ import { EliminarReservaComponent } from './eliminar-reserva.component';
 describe('EliminarReservaComponent', () => {
   let component: EliminarReservaComponent;
   let fixture: ComponentFixture<EliminarReservaComponent>;
+  let reservaService: ReservaService;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -27,11 +28,16 @@ describe('EliminarReservaComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EliminarReservaComponent);
     component = fixture.componentInstance;
+    
+    reservaService = TestBed.inject(ReservaService);
+    spyOn(reservaService, 'eliminar');
     fixture.detectChanges();
   });
   
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+ 
  
 });

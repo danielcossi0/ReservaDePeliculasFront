@@ -8,11 +8,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CrearReservaComponent } from './crear-reserva.component';
 import { HttpService } from '@core/services/http.service';
 import { of } from 'rxjs';
+import { Reserva } from '@reserva/shared/model/reserva';
 
 describe('CrearReservaComponent', () => {
   let component: CrearReservaComponent;
   let fixture: ComponentFixture<CrearReservaComponent>;
   let reservaService: ReservaService;
+  
+  let fechaReservaTest: Date = new Date();
+  let fechaEntregaTest: Date = new Date();
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -46,4 +50,22 @@ describe('CrearReservaComponent', () => {
   it('deberia validar cuando el formulario está vacio', () => {
     expect(component.reservaForm.valid).toBeFalsy();
   });
+
+  it('Deberia tomar los datos del formulario y enviarlos al servicio de guardar', () => {
+    const reservaTest: Reserva = new Reserva(
+      1,
+      "1",
+      "spiderman",
+      fechaReservaTest,
+      1,
+      fechaEntregaTest,
+      25000.0,
+      "Pendiente");
+
+      component.reservaForm.value.cedulaCliente = reservaTest.cedulaCliente; 
+      component.reservaForm.value.nombreDeLaPelicula = reservaTest.nombreDeLaPelicula; 
+      component.reservaForm.value.diasDeReserva = reservaTest.diasDeReserva;     
+    component.crear();
+    expect(component.crear).toHaveBeenCalled;
+});
 });

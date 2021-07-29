@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
 import { Reserva } from '@reserva/shared/model/reserva';
@@ -13,10 +14,11 @@ describe('ListarReservaComponent', () => {
   let component: ListarReservaComponent;
   let fixture: ComponentFixture<ListarReservaComponent>;
   let reservaService: ReservaService;
-  
+  let router: Router;
+
   let fechaReservaTest: Date = new Date();
   let fechaEntregaTest: Date = new Date();
-  const listaReservas: Reserva[]  = [
+  const listaReservas: Reserva[] = [
     new Reserva(1,
       "123456789",
       "spiderman",
@@ -53,15 +55,38 @@ describe('ListarReservaComponent', () => {
     fixture = TestBed.createComponent(ListarReservaComponent);
     component = fixture.componentInstance;
     reservaService = TestBed.inject(ReservaService);
+    router = TestBed.inject(Router);
     spyOn(reservaService, 'consultar').and.returnValue(
       of(listaReservas)
     );
     fixture.detectChanges();
+    
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
- 
-  
+
+  it('Deberia guardar los datos de la reserva para mostrarlos despues del redireccionamiento', () => {
+    const reservaTest: Reserva = new Reserva(
+      1,
+      "1",
+      "spiderman",
+      fechaReservaTest,
+      1,
+      fechaEntregaTest,
+      25000.0,
+      "Pendiente");
+      spyOn(router, 'navigate');
+    component.modificarReserva(reservaTest);
+    expect(component.modificarReserva).toHaveBeenCalled;
+  });
+
+  it('Deberia guardar el id de la reserva para mostrarlo despues del redireccionamiento', () => {
+    const idReservaTest:number = 1;
+    spyOn(router, 'navigate');
+    component.eliminarReserva(idReservaTest);
+    expect(component.eliminarReserva).toHaveBeenCalled;
+  });
+
 });

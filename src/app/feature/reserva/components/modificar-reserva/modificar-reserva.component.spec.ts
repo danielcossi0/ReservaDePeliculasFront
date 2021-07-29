@@ -12,7 +12,7 @@ import { of } from 'rxjs';
 describe('ModificarReservaComponent', () => {
   let component: ModificarReservaComponent;
   let fixture: ComponentFixture<ModificarReservaComponent>;
-  let reservaService:ReservaService;
+  let reservaService: ReservaService;
 
   let fechaReservaTest: Date = new Date();
   let fechaEntregaTest: Date = new Date();
@@ -25,8 +25,8 @@ describe('ModificarReservaComponent', () => {
     25000.0,
     "Pendiente"
   )
-  
-  localStorage.setItem('reserva',JSON.stringify(reservaModificableTest))
+
+  localStorage.setItem('reserva', JSON.stringify(reservaModificableTest))
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -54,21 +54,20 @@ describe('ModificarReservaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-/*
-  it('Deberia tomar los datos del formulario y enviarlos al servicio de actualizar',()=>{
-    const reservaTest: Reserva = new Reserva(1,
-      "1",
-      "spiderman",
-      fechaReservaTest,
-      1,
-      fechaEntregaTest,
-      25000.0,
-      "Pendiente");
 
-      component.reservaActualizada=reservaTest;
+  it('Deberia tomar los datos del formulario y enviarlos al servicio de actualizar', () => {
+      const reservaTest: Reserva = new Reserva(
+        1,
+        "1",
+        "spiderman",
+        fechaReservaTest,
+        1,
+        fechaEntregaTest,
+        25000.0,
+        "Pendiente");
 
-    let metodoEjecutado = spyOn(component,'actualizar').and.callThrough();
- 
-    expect(metodoEjecutado).toHaveBeenCalled();
-  });*/
+      component.reservaActualizada = reservaTest;      
+      component.actualizar();
+      expect(component.actualizar).toHaveBeenCalled;
+  });
 });
