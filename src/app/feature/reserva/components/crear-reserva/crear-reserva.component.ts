@@ -29,9 +29,9 @@ export class CrearReservaComponent implements OnInit {
       () => {
         this.reservaForm.reset();
         this.router.navigate(['reservas/listar']);
-        this.toastr.success('Reserva registrada correctamente', 'TODO CORRECTO')
+        this.toastr.success('Reserva registrada correctamente', 'TODO CORRECTO');
       }, () =>{
-        this.toastr.error('Ocurrió un error al reservar.', 'Algo salió mal...')
+        this.toastr.error('Ocurrió un error al reservar.', 'Algo salió mal...');
       }
     );
   }

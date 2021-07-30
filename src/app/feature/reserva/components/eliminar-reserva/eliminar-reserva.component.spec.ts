@@ -16,33 +16,30 @@ describe('EliminarReservaComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ EliminarReservaComponent ],
+      declarations: [EliminarReservaComponent],
       imports: [
         CommonModule,
         HttpClientModule,
         RouterTestingModule,
         ToastrModule.forRoot(),
         BrowserAnimationsModule,
-        
+
       ],
       providers: [ReservaService, HttpService],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EliminarReservaComponent);
     component = fixture.componentInstance;
-    
+
     reservaService = TestBed.inject(ReservaService);
     spyOn(reservaService, 'eliminar');
     fixture.detectChanges();
   });
-  
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
- 
- 
 });

@@ -33,9 +33,9 @@ export class EliminarReservaComponent implements OnInit {
       ()=>{
         this.eliminarReservaForm.reset();
         this.router.navigate(['reservas/listar']);
-        this.toastr.success('Reserva eliminada correctamente', 'TODO CORRECTO')
+        this.toastr.success('Reserva eliminada correctamente', 'TODO CORRECTO');
       },() =>{
-        this.toastr.error('Ocurrió un error al eliminar la reserva.', 'Algo salió mal...')
+        this.toastr.error('Ocurrió un error al eliminar la reserva.', 'Algo salió mal...');
       }
     );
   }

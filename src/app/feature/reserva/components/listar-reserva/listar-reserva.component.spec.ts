@@ -67,7 +67,7 @@ describe('ListarReservaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Deberia guardar los datos de la reserva para mostrarlos despues del redireccionamiento', () => {
+  it('Deberia enviar los datos de la reserva para mostrarlos despues del redireccionamiento', () => {
     const reservaTest: Reserva = new Reserva(
       1,
       "1",
@@ -82,7 +82,7 @@ describe('ListarReservaComponent', () => {
     expect(component.modificarReserva).toHaveBeenCalled;
   });
 
-  it('Deberia guardar el id de la reserva para mostrarlo despues del redireccionamiento', () => {
+  it('Deberia enviar el id de la reserva para mostrarlo despues del redireccionamiento', () => {
     const idReservaTest:number = 1;
     spyOn(router, 'navigate');
     component.eliminarReserva(idReservaTest);

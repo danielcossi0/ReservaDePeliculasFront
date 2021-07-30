@@ -61,11 +61,10 @@ export class ModificarReservaComponent implements OnInit {
       ()=>{
         this.router.navigate(['reservas/listar']);
         
-        this.toastr.success('Modificación registrada correctamente', 'TODO CORRECTO')
+        this.toastr.success('Modificación registrada correctamente', 'TODO CORRECTO');
       },() =>{
-        this.toastr.error('Ocurrió un error al actualizar.', 'Algo salió mal...')
+        this.toastr.error('Ocurrió un error al actualizar.', 'Algo salió mal...');
       }
     );
   }
 }
- 
