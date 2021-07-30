@@ -1,64 +1,14 @@
 <div class="container-sm col-md-6">
     <form [formGroup]="listaPorCedulaForm">
         <div class="form-group">
-            <label>Cédula:</label>
-            <input validar class="form-control" type="text" id="cedulaCliente" name="cedulaCliente" placeholder="Cédula" formControlName="cedulaCliente">
+            <label>Filtrar reservas por cédula:</label>
+            <input class="form-control" type="text" id="cedulaCliente" name="cedulaCliente" placeholder="Cédula" formControlName="cedulaCliente">
         </div>
         <br>
         <div class="d-grid gap-2">
-            <button class="btn btn-primary btn-lg" id="btnConsultar" (click)="obtenerReservas()" type="submit">
+            <button class="btn btn-primary btn-lg" id="btnConsultar" (click)="obtenerReservas(); emitirListaFiltrada()" type="submit">
                 Consultar</button>
 
         </div>
     </form>
-</div>
-
-<hr>
-<div class="card">
-    <div class="card-body">
-        <h5 class="titulo">Reservas</h5>
-        <table class="table" aria-describedby="Reservas filtradas">
-            <thead>
-                <tr>
-                    <th scope="col">Id de Reserva</th>
-                    <th scope="col">Cédula</th>
-                    <th scope="col">Pelicula</th>
-                    <th scope="col">Fecha de reserva</th>
-                    <th scope="col">Días de reserva</th>
-                    <th scope="col">Fecha de Entrega</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Estado</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let reserva of listaReservas">
-                    <td>
-                        {{reserva.idReserva}}
-                    </td>
-                    <td>
-                        {{reserva.cedulaCliente}}
-                    </td>
-                    <td>
-                        {{reserva.nombreDeLaPelicula}}
-                    </td>
-                    <td>
-                        {{reserva.fechaDeReserva}}
-                    </td>
-                    <td>
-                        {{reserva.diasDeReserva}}
-                    </td>
-                    <td>
-                        {{reserva.fechaDeEntrega}}
-                    </td>
-                    <td>
-                        {{reserva.precioCalculado}}
-                    </td>
-                    <td>
-                        {{reserva.estado}}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </div>

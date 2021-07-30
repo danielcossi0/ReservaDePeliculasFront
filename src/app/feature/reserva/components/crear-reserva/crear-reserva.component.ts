@@ -2,6 +2,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReservaService } from './../../shared/service/reserva.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 const LONGITUD_MAXIMA_PERMITIDA_CEDULA = 15;
@@ -16,7 +17,8 @@ export class CrearReservaComponent implements OnInit {
 
   reservaForm: FormGroup;
   constructor(protected _reservaServices: ReservaService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.construirFormularioReserva();
@@ -24,9 +26,12 @@ export class CrearReservaComponent implements OnInit {
 
   crear() {
     this._reservaServices.guardar(this.reservaForm.value).subscribe(
-      ()=>{
+      () => {
         this.reservaForm.reset();
         this.router.navigate(['reservas/listar']);
+        this.toastr.success('Reserva registrada correctamente', 'TODO CORRECTO')
+      }, () =>{
+        this.toastr.error('Ocurrió un error al reservar.', 'Algo salió mal...')
       }
     );
   }

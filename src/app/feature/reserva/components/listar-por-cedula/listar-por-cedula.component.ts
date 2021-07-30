@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms'; 
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReservaService } from './../../shared/service/reserva.service';
 import { Reserva } from './../../shared/model/reserva';
 
@@ -10,7 +10,9 @@ import { Reserva } from './../../shared/model/reserva';
 })
 
 export class ListarPorCedulaComponent implements OnInit {
-  
+
+  @Output() listaFiltrada = new EventEmitter<Reserva[]>();
+
   listaPorCedulaForm: FormGroup;
   listaReservas: Reserva[] = [];
   cedulaCliente: string;
@@ -33,6 +35,9 @@ export class ListarPorCedulaComponent implements OnInit {
     this.listaPorCedulaForm = new FormGroup({
       cedulaCliente: new FormControl('', Validators.required)
     });
+  }
 
+  emitirListaFiltrada() {
+    this.listaFiltrada.emit(this.listaReservas);
   }
 }

@@ -1,6 +1,6 @@
 import { ReservaService } from './../../shared/service/reserva.service';
 import { Reserva } from './../../shared/model/reserva';
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -32,5 +32,9 @@ export class ListarReservaComponent implements OnInit {
   eliminarReserva(idReserva:number){
     localStorage.setItem('idReserva',JSON.stringify(idReserva));
     this.router.navigate(['reservas/borrar']);
+  }
+
+  cargarListaFiltrada(reservasFiltradas: Reserva[]){
+    this.listaReservas=reservasFiltradas;
   }
 }

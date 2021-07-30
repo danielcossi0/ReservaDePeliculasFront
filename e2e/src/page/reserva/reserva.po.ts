@@ -24,7 +24,7 @@ export class ReservaPage {
     
     async irABorrarReserva(): Promise<number> {
         return browser.get(browser.baseUrl + '/reservas/borrar');
-    }
+    } 
     
     async irAFiltrarPorCedulaReserva(): Promise<number> {
         return browser.get(browser.baseUrl + '/reservas/listar-por-cedula');

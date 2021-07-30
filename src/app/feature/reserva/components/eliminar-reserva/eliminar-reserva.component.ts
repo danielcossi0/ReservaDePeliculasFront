@@ -2,6 +2,7 @@ import { ReservaService } from './../../shared/service/reserva.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-eliminar-reserva',
@@ -11,7 +12,8 @@ export class EliminarReservaComponent implements OnInit {
   eliminarReservaForm: FormGroup;
   idReserva: number;
   constructor(private _reservaService:ReservaService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.construirFormularioElimiarReserva();
@@ -31,6 +33,9 @@ export class EliminarReservaComponent implements OnInit {
       ()=>{
         this.eliminarReservaForm.reset();
         this.router.navigate(['reservas/listar']);
+        this.toastr.success('Reserva eliminada correctamente', 'TODO CORRECTO')
+      },() =>{
+        this.toastr.error('Ocurrió un error al eliminar la reserva.', 'Algo salió mal...')
       }
     );
   }

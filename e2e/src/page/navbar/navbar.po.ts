@@ -4,7 +4,6 @@ export class NavbarPage {
  
     linkListarTodo = element(by.xpath('/html/body/app-root/app-navbar/nav/div/a[1]'));
     linkCrear = element(by.xpath('/html/body/app-root/app-navbar/nav/div/a[2]'));
-    linkFiltrar = element(by.xpath('/html/body/app-root/app-navbar/nav/div/a[3]'));
 
 
     async clickBotonListar() {
@@ -12,8 +11,5 @@ export class NavbarPage {
     }
     async clickBotonCrear() {
         await this.linkCrear.click();
-    }
-    async clickBotonFiltrar() {
-        await this.linkFiltrar.click();
     }
 }

@@ -9,6 +9,8 @@ import { CrearReservaComponent } from './crear-reserva.component';
 import { HttpService } from '@core/services/http.service';
 import { of } from 'rxjs';
 import { Reserva } from '@reserva/shared/model/reserva';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CrearReservaComponent', () => {
   let component: CrearReservaComponent;
@@ -26,7 +28,9 @@ describe('CrearReservaComponent', () => {
         HttpClientModule,
         RouterTestingModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule,
       ],
       providers: [ReservaService, HttpService],
     })

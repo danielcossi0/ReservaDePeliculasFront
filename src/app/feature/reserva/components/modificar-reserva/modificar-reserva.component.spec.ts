@@ -8,6 +8,8 @@ import { ModificarReservaComponent } from './modificar-reserva.component';
 import { HttpService } from '@core/services/http.service';
 import { Reserva } from '@reserva/shared/model/reserva';
 import { of } from 'rxjs';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ModificarReservaComponent', () => {
   let component: ModificarReservaComponent;
@@ -34,7 +36,9 @@ describe('ModificarReservaComponent', () => {
       imports: [
         CommonModule,
         HttpClientModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule,
       ],
       providers: [ReservaService, HttpService]
     })

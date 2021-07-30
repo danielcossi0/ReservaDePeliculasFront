@@ -5,6 +5,8 @@ import { ReservaModule } from './feature/reserva/reserva.module';
 import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -18,7 +20,9 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    ReservaModule
+    ReservaModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],

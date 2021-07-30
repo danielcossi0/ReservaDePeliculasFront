@@ -21,7 +21,7 @@ describe('workspace-project Producto', () => {
     });
 
     it('deberria crear una reserva', async () => {
-        const cedulaClienteTest: string = '12345678';
+        const cedulaClienteTest: string = '123456783';
         const nombreDeLaPeliculaTest: string = 'e2eTest';
         const diasDeReservaTest: number = 5;
         await page.navigateTo();
@@ -50,7 +50,7 @@ describe('workspace-project Producto', () => {
 
     it('deberria listar una reserva filtrando por cedula', async () => {
         await page.navigateTo();
-        await navBar.clickBotonFiltrar();
+        await navBar.clickBotonListar();
         await reserva.ingresarCedulaDeCliente('1');
         await reserva.clickBotonConsultar();
         

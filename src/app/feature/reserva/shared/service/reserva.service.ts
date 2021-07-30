@@ -13,6 +13,7 @@ export class ReservaService {
   public guardar(reserva: Reserva) {
     return this.http.doPost<Reserva, boolean>(`${environment.endpoint}/reservas`, reserva,
       this.http.optsName('crear reserva'));
+      
   }
 
   public consultar() {

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Reserva } from '@reserva/shared/model/reserva';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 const LONGITUD_MAXIMA_PERMITIDA_CEDULA = 15;
@@ -17,7 +18,8 @@ export class ModificarReservaComponent implements OnInit {
   
   reservaForm: FormGroup;
   constructor(protected _reservaServices:ReservaService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
   reserva:Reserva;
   reservaActualizada: Reserva;
   ngOnInit(): void {
@@ -40,8 +42,10 @@ export class ModificarReservaComponent implements OnInit {
 
       diasDeReserva: new FormControl(this.reserva.diasDeReserva, Validators.compose([Validators.required,
       Validators.max(DIAS_MAXIMOS_DE_RESERVA_PERMITIDOS)])),
- 
+        
       fechaDeEntrega: new FormControl(this.reserva.fechaDeEntrega),
+
+      precioCalculado: new FormControl(this.reserva.precioCalculado),
 
       estado: new FormControl(this.reserva.estado)
     });
@@ -56,6 +60,10 @@ export class ModificarReservaComponent implements OnInit {
     this._reservaServices.actualizar(this.reservaActualizada).subscribe(
       ()=>{
         this.router.navigate(['reservas/listar']);
+        
+        this.toastr.success('Modificación registrada correctamente', 'TODO CORRECTO')
+      },() =>{
+        this.toastr.error('Ocurrió un error al actualizar.', 'Algo salió mal...')
       }
     );
   }
