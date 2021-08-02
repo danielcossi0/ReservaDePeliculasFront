@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             <label>Fecha de reserva:</label>
-            <input validar type="datetime" id="fechaDeReserva" name="fechaDeReserva" placeholder="Fecha de reserva" class="form-control " formControlName="fechaDeReserva">
+            <input validar type="datetime" id="fechaDeReserva" name="fechaDeReserva" placeholder="Fecha de reserva" class="form-control " formControlName="fechaDeReserva" readonly>
         </div>
         <div class="form-group">
             <label>Dias de reserva:</label>
@@ -27,7 +27,7 @@
         </div>
         <br>
         <div class="d-grid gap-2">
-            <button class="btn btn-success btn-lg" id="btnGuardarReservaModificada" (click)="actualizar()" type="submit">
+            <button class="btn btn-success btn-lg" [disabled]="reservaForm.invalid" id="btnGuardarReservaModificada" (click)="actualizar()" type="submit">
                 Guardar</button>
         </div>
     </form>

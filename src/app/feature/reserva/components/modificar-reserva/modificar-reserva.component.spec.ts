@@ -16,19 +16,19 @@ describe('ModificarReservaComponent', () => {
   let fixture: ComponentFixture<ModificarReservaComponent>;
   let reservaService: ReservaService;
 
-  let fechaReservaTest: Date = new Date();
-  let fechaEntregaTest: Date = new Date();
-  let reservaModificableTest: Reserva = new Reserva(1,
-    "123456789",
-    "spiderman",
+  const fechaReservaTest: Date = new Date();
+  const fechaEntregaTest: Date = new Date();
+  const reservaModificableTest: Reserva = new Reserva(1,
+    '123456789',
+    'spiderman',
     fechaReservaTest,
     1,
     fechaEntregaTest,
     25000.0,
-    "Pendiente"
-  )
+    'Pendiente'
+  );
 
-  localStorage.setItem('reserva', JSON.stringify(reservaModificableTest))
+  localStorage.setItem('reserva', JSON.stringify(reservaModificableTest));
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -49,9 +49,6 @@ describe('ModificarReservaComponent', () => {
     fixture = TestBed.createComponent(ModificarReservaComponent);
     component = fixture.componentInstance;
     reservaService = TestBed.inject(ReservaService);
-    spyOn(reservaService, 'actualizar').and.returnValue(
-      of(reservaModificableTest)
-    );
     fixture.detectChanges();
   });
 
@@ -60,18 +57,20 @@ describe('ModificarReservaComponent', () => {
   });
 
   it('Deberia tomar los datos del formulario y enviarlos al servicio de actualizar', () => {
-      const reservaTest: Reserva = new Reserva(
-        1,
-        "1",
-        "spiderman",
-        fechaReservaTest,
-        1,
-        fechaEntregaTest,
-        25000.0,
-        "Pendiente");
-
-      component.reservaActualizada = reservaTest;      
-      component.actualizar();
-      expect(component.actualizar).toHaveBeenCalled;
+    const reservaTest: Reserva = new Reserva(
+      1,
+      '1',
+      'spiderman',
+      fechaReservaTest,
+      1,
+      fechaEntregaTest,
+      25000.0,
+      'Pendiente');
+    component.reservaActualizada = reservaTest;
+    const spy = spyOn(reservaService, 'actualizar').and.returnValue(
+      of(reservaModificableTest)
+    );
+    component.actualizar();
+    expect(spy).toHaveBeenCalled();
   });
 });

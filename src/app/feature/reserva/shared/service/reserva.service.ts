@@ -7,32 +7,32 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ReservaService {
 
-  constructor(protected http: HttpService,
-    private httpClient:HttpClient) { }
+  constructor(
+    protected http: HttpService,
+    private httpClient: HttpClient) { }
 
   public guardar(reserva: Reserva) {
     return this.http.doPost<Reserva, boolean>(`${environment.endpoint}/reservas`, reserva,
       this.http.optsName('crear reserva'));
-      
   }
 
   public consultar() {
-    return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas`, 
-    this.http.optsName('consultar reservas'));
+    return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas`,
+      this.http.optsName('consultar reservas'));
   }
 
   public consultarPorCedula(cedula: string) {
-    return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas/${cedula}`, 
-    this.http.optsName('listar por cedula'));
+    return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas/${cedula}`,
+      this.http.optsName('listar por cedula'));
   }
- 
-  public eliminar(idReserva: number) {    
+
+  public eliminar(idReserva: number) {
     return this.http.doDelete<boolean>(`${environment.endpoint}/reservas/${idReserva}`,
       this.http.optsName('eliminar reserva'));
   }
 
-  public actualizar(reserva:Reserva){
-    return this.httpClient.put<Reserva>(`${environment.endpoint}/reservas/${reserva.idReserva}`, 
-    reserva);
+  public actualizar(reserva: Reserva) {
+    return this.httpClient.put<Reserva>(`${environment.endpoint}/reservas/${reserva.idReserva}`,
+      reserva);
   }
 }

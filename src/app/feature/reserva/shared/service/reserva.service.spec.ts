@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 import { HttpResponse } from '@angular/common/http';
 
 describe('ReservaService', () => {
-  let fechaReservaTest: Date = new Date();
-  let fechaEntregaTest: Date = new Date();
+  const fechaReservaTest: Date = new Date();
+  const fechaEntregaTest: Date = new Date();
   let httpMock: HttpTestingController;
   let service: ReservaService;
   const apiEndpointReservas = `${environment.endpoint}/reservas`;
@@ -34,29 +34,29 @@ describe('ReservaService', () => {
 
     const dummyReservas = [
       new Reserva(1,
-        "1",
-        "spiderman",
+        '1',
+        'spiderman',
         fechaReservaTest,
         1,
         fechaEntregaTest,
         25000.0,
-        "Pendiente"
+        'Pendiente'
       ), new Reserva(2,
-        "2",
-        "spiderman 2",
+        '2',
+        'spiderman 2',
         fechaReservaTest,
         1,
         fechaEntregaTest,
         25000.0,
-        "Pendiente"
+        'Pendiente'
       ), new Reserva(3,
-        "1",
-        "spiderman 3",
+        '1',
+        'spiderman 3',
         fechaReservaTest,
         1,
         fechaEntregaTest,
         25000.0,
-        "Pendiente"
+        'Pendiente'
       )
     ];
 
@@ -72,44 +72,44 @@ describe('ReservaService', () => {
   it('deberia listar las reservas de un cliente', () => {
     const dummyReservas = [
       new Reserva(1,
-        "1",
-        "spiderman",
+        '1',
+        'spiderman',
         fechaReservaTest,
         1,
         fechaEntregaTest,
         25000.0,
-        "Pendiente"
+        'Pendiente'
       ), new Reserva(3,
-        "1",
-        "spiderman 3",
+        '1',
+        'spiderman 3',
         fechaReservaTest,
         1,
         fechaEntregaTest,
         25000.0,
-        "Pendiente"
+        'Pendiente'
       )
     ];
-    service.consultarPorCedula("1").subscribe(reservas => {
+    service.consultarPorCedula('1').subscribe(reservas => {
 
       expect(reservas.length).toBe(2);
       expect(reservas).toEqual(dummyReservas);
 
     });
 
-    const req = httpMock.expectOne(apiEndpointReservas + "/1");
+    const req = httpMock.expectOne(apiEndpointReservas + '/1');
     expect(req.request.method).toBe('GET');
     req.flush(dummyReservas);
   });
 
   it('deberia crear una reserva', () => {
     const reservaTest: Reserva = new Reserva(1,
-      "1",
-      "spiderman",
+      '1',
+      'spiderman',
       fechaReservaTest,
       1,
       fechaEntregaTest,
       25000.0,
-      "Pendiente");
+      'Pendiente');
 
     service.guardar(reservaTest).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
@@ -121,13 +121,13 @@ describe('ReservaService', () => {
 
   it('deberia eliminar una reserva', () => {
     const reservaTest: Reserva = new Reserva(1,
-      "1",
-      "spiderman",
+      '1',
+      'spiderman',
       fechaReservaTest,
       1,
       fechaEntregaTest,
       25000.0,
-      "Pendiente");
+      'Pendiente');
     service.eliminar(reservaTest.idReserva).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
@@ -138,16 +138,16 @@ describe('ReservaService', () => {
 
   it('deberia modificar una reserva', () => {
     const reservaTest: Reserva = new Reserva(1,
-      "1",
-      "spiderman",
+      '1',
+      'spiderman',
       fechaReservaTest,
       1,
       fechaEntregaTest,
       25000.0,
-      "Pendiente");
+      'Pendiente');
 
-    service.actualizar(reservaTest).subscribe((respuesta)=>{
+    service.actualizar(reservaTest).subscribe((respuesta) => {
       expect(respuesta).toEqual(reservaTest);
     });
   });
-}); 
+});

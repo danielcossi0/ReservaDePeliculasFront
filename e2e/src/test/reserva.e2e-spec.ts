@@ -21,9 +21,9 @@ describe('workspace-project Producto', () => {
     });
 
     it('deberria crear una reserva', async () => {
-        const cedulaClienteTest: string = '123456783';
-        const nombreDeLaPeliculaTest: string = 'e2eTest';
-        const diasDeReservaTest: number = 5;
+        const cedulaClienteTest = '13456783';
+        const nombreDeLaPeliculaTest = 'e2eTest';
+        const diasDeReservaTest = 5;
         await page.navigateTo();
         await navBar.clickBotonCrear();
         await reserva.ingresarCedulaDeCliente(cedulaClienteTest);
@@ -44,7 +44,7 @@ describe('workspace-project Producto', () => {
         await page.navigateTo();
         await navBar.clickBotonListar();
         await reserva.clickBotonModificarReserva();
-        await reserva.ingresarNombreDeLaPelicula("nombreTest-e2e");
+        await reserva.ingresarNombreDeLaPelicula('nombreTest-e2e');
         await reserva.clickBotonGuardarReservaModifica();
     });
 
@@ -53,7 +53,6 @@ describe('workspace-project Producto', () => {
         await navBar.clickBotonListar();
         await reserva.ingresarCedulaDeCliente('1');
         await reserva.clickBotonConsultar();
-        
-        expect(reserva.contarReservas()).toBeGreaterThanOrEqual(0)
+        expect(reserva.contarReservas()).toBeGreaterThanOrEqual(0);
     });
 });

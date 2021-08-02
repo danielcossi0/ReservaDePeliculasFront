@@ -16,25 +16,25 @@ describe('ListarReservaComponent', () => {
   let reservaService: ReservaService;
   let router: Router;
 
-  let fechaReservaTest: Date = new Date();
-  let fechaEntregaTest: Date = new Date();
+  const fechaReservaTest: Date = new Date();
+  const fechaEntregaTest: Date = new Date();
   const listaReservas: Reserva[] = [
     new Reserva(1,
-      "123456789",
-      "spiderman",
+      '123456789',
+      'spiderman',
       fechaReservaTest,
       1,
       fechaEntregaTest,
       25000.0,
-      "Pendiente"
+      'Pendiente'
     ), new Reserva(2,
-      "123456789",
-      "spiderman 2",
+      '123456789',
+      'spiderman 2',
       fechaReservaTest,
       1,
       fechaEntregaTest,
       25000.0,
-      "Pendiente"
+      'Pendiente'
     )
   ];
 
@@ -60,7 +60,6 @@ describe('ListarReservaComponent', () => {
       of(listaReservas)
     );
     fixture.detectChanges();
-    
   });
 
   it('should create', () => {
@@ -70,23 +69,22 @@ describe('ListarReservaComponent', () => {
   it('Deberia enviar los datos de la reserva para mostrarlos despues del redireccionamiento', () => {
     const reservaTest: Reserva = new Reserva(
       1,
-      "1",
-      "spiderman",
+      '1',
+      'spiderman',
       fechaReservaTest,
       1,
       fechaEntregaTest,
       25000.0,
-      "Pendiente");
-      spyOn(router, 'navigate');
+      'Pendiente');
+    const spy = spyOn(router, 'navigate');
     component.modificarReserva(reservaTest);
-    expect(component.modificarReserva).toHaveBeenCalled;
+    expect(spy).toHaveBeenCalled();
   });
 
   it('Deberia enviar el id de la reserva para mostrarlo despues del redireccionamiento', () => {
-    const idReservaTest:number = 1;
-    spyOn(router, 'navigate');
+    const idReservaTest = 1;
+    const spy = spyOn(router, 'navigate');
     component.eliminarReserva(idReservaTest);
-    expect(component.eliminarReserva).toHaveBeenCalled;
+    expect(spy).toHaveBeenCalled();
   });
-
 });

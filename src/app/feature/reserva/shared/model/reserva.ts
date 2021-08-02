@@ -9,7 +9,8 @@ export class Reserva {
     estado: string;
 
 
-    constructor(idReserva: number,
+    constructor(
+        idReserva: number,
         cedulaCliente: string,
         nombreDeLaPelicula: string,
         fechaDeReserva: Date,

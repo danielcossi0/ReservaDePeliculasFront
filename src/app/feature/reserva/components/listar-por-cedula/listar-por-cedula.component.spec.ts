@@ -13,26 +13,26 @@ describe('ListarPorCedulaComponent', () => {
   let component: ListarPorCedulaComponent;
   let fixture: ComponentFixture<ListarPorCedulaComponent>;
   let reservaService: ReservaService;
-  
-  let fechaReservaTest: Date = new Date();
-  let fechaEntregaTest: Date = new Date();
-  const listaReservas: Reserva[]  = [
+
+  const fechaReservaTest: Date = new Date();
+  const fechaEntregaTest: Date = new Date();
+  const listaReservas: Reserva[] = [
     new Reserva(1,
-      "123456789",
-      "spiderman",
+      '123456789',
+      'spiderman',
       fechaReservaTest,
       1,
       fechaEntregaTest,
       25000.0,
-      "Pendiente"
+      'Pendiente'
     ), new Reserva(2,
-      "123456789",
-      "spiderman 2",
+      '123456789',
+      'spiderman 2',
       fechaReservaTest,
       1,
       fechaEntregaTest,
       25000.0,
-      "Pendiente"
+      'Pendiente'
     )
   ];
 
@@ -62,5 +62,4 @@ describe('ListarPorCedulaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
- 
 });

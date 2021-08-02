@@ -17,7 +17,7 @@ export class ListarPorCedulaComponent implements OnInit {
   listaReservas: Reserva[] = [];
   cedulaCliente: string;
 
-  constructor(private _reservaService: ReservaService) { }
+  constructor(private reservaService: ReservaService) { }
 
   ngOnInit(): void {
     this.construirFormularioReservasPorCedula();
@@ -26,7 +26,7 @@ export class ListarPorCedulaComponent implements OnInit {
 
   obtenerReservas() {
     this.cedulaCliente = this.listaPorCedulaForm.value.cedulaCliente;
-    this._reservaService.consultarPorCedula(this.cedulaCliente).subscribe(data => {
+    this.reservaService.consultarPorCedula(this.cedulaCliente).subscribe(data => {
       this.listaReservas = data;
     });
   }

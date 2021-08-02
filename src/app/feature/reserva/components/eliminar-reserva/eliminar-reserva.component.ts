@@ -11,16 +11,15 @@ import { ToastrService } from 'ngx-toastr';
 export class EliminarReservaComponent implements OnInit {
   eliminarReservaForm: FormGroup;
   idReserva: number;
-  constructor(private _reservaService:ReservaService,
-    private router: Router,
-    private toastr: ToastrService) { }
+  constructor(private reservaService: ReservaService,
+              private router: Router,
+              private toastr: ToastrService){}
 
   ngOnInit(): void {
     this.construirFormularioElimiarReserva();
   }
 
   private construirFormularioElimiarReserva() {
-    
     this.idReserva = JSON.parse(localStorage.getItem('idReserva'));
     this.eliminarReservaForm = new FormGroup({
       idReserva: new FormControl(this.idReserva, Validators.required)
@@ -29,12 +28,12 @@ export class EliminarReservaComponent implements OnInit {
   }
 
   eliminarReserva(){
-    this._reservaService.eliminar(this.eliminarReservaForm.value.idReserva).subscribe(
-      ()=>{
+    this.reservaService.eliminar(this.eliminarReservaForm.value.idReserva).subscribe(
+      () => {
         this.eliminarReservaForm.reset();
         this.router.navigate(['reservas/listar']);
         this.toastr.success('Reserva eliminada correctamente', 'TODO CORRECTO');
-      },() =>{
+      }, () => {
         this.toastr.error('Ocurrió un error al eliminar la reserva.', 'Algo salió mal...');
       }
     );

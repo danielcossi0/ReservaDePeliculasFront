@@ -16,9 +16,8 @@ describe('CrearReservaComponent', () => {
   let component: CrearReservaComponent;
   let fixture: ComponentFixture<CrearReservaComponent>;
   let reservaService: ReservaService;
-  
-  let fechaReservaTest: Date = new Date();
-  let fechaEntregaTest: Date = new Date();
+  const fechaReservaTest: Date = new Date();
+  const fechaEntregaTest: Date = new Date();
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -41,9 +40,6 @@ describe('CrearReservaComponent', () => {
     fixture = TestBed.createComponent(CrearReservaComponent);
     component = fixture.componentInstance;
     reservaService = TestBed.inject(ReservaService);
-    spyOn(reservaService, 'guardar').and.returnValue(
-      of(true)
-    );
     fixture.detectChanges();
   });
 
@@ -58,18 +54,21 @@ describe('CrearReservaComponent', () => {
   it('Deberia tomar los datos del formulario y enviarlos al servicio de guardar', () => {
     const reservaTest: Reserva = new Reserva(
       1,
-      "1",
-      "spiderman",
+      '1',
+      'spiderman',
       fechaReservaTest,
       1,
       fechaEntregaTest,
       25000.0,
-      "Pendiente");
+      'Pendiente');
 
-      component.reservaForm.value.cedulaCliente = reservaTest.cedulaCliente; 
-      component.reservaForm.value.nombreDeLaPelicula = reservaTest.nombreDeLaPelicula; 
-      component.reservaForm.value.diasDeReserva = reservaTest.diasDeReserva;     
+    component.reservaForm.value.cedulaCliente = reservaTest.cedulaCliente;
+    component.reservaForm.value.nombreDeLaPelicula = reservaTest.nombreDeLaPelicula;
+    component.reservaForm.value.diasDeReserva = reservaTest.diasDeReserva;
+    const spy = spyOn(reservaService, 'guardar').and.returnValue(
+      of(true)
+    );
     component.crear();
-    expect(component.crear).toHaveBeenCalled;
+    expect(spy).toHaveBeenCalled();
 });
 });

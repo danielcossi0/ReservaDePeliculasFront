@@ -16,21 +16,21 @@ const DIAS_MAXIMOS_DE_RESERVA_PERMITIDOS = 5;
 export class CrearReservaComponent implements OnInit {
 
   reservaForm: FormGroup;
-  constructor(protected _reservaServices: ReservaService,
-    private router: Router,
-    private toastr: ToastrService) { }
+  constructor(protected reservaServices: ReservaService,
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.construirFormularioReserva();
   }
 
   crear() {
-    this._reservaServices.guardar(this.reservaForm.value).subscribe(
+    this.reservaServices.guardar(this.reservaForm.value).subscribe(
       () => {
         this.reservaForm.reset();
         this.router.navigate(['reservas/listar']);
         this.toastr.success('Reserva registrada correctamente', 'TODO CORRECTO');
-      }, () =>{
+      }, () => {
         this.toastr.error('Ocurrió un error al reservar.', 'Algo salió mal...');
       }
     );
